@@ -41,7 +41,7 @@ public class CustomListview extends ArrayAdapter<String> {
         }
 
         viewHolder.imv.setImageResource(imgs[position]);
-        viewHolder.tx.setText(names[position]);
+
         return view;
     }
 
@@ -50,7 +50,7 @@ public class CustomListview extends ArrayAdapter<String> {
         TextView tx;
         public ViewHolder(View view){
             imv = view.findViewById(R.id.imageView);
-            tx = view.findViewById(R.id.textView);
+
         }
     }
 }

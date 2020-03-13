@@ -13,9 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        HallOfShameActivity hallOfShame = new HallOfShameActivity();
-        /*databaseAPI = new DatabaseAPI(hallOfShame);
-        databaseAPI.getImages("uploads");*/
+        //HallOfShameActivity hallOfShame = new HallOfShameActivity();
         Intent intent = new Intent(MainActivity.this, HallOfShameActivity.class);
         startActivityForResult(intent,1);
     }
