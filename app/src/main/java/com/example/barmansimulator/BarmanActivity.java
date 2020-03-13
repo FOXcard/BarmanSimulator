@@ -106,89 +106,58 @@ boolean tomb=false;
                 changeSpeed = 0;
             }
 
-            if (xChange > 0.4){
-                direction[0] = "RIGHT";
-                //axis ++;
-            }
-            else if (xChange < -0.4){
-                direction[0] = "LEFT";
-                //axis --;
-            }
-            else {
-                direction[0] = "MID";
-            }
-
-            if (yChange > 0.4){
-                direction[1] = "DOWN";
-                //axis++;
-            }
-            else if (yChange < -0.4){
-                direction[1] = "UP";
-                //axis--;
-            }
-            else {
-                direction[1] = "MID";
-            }
             if (zChange > 0.2){
-                direction[1] = "DOWN";
                 axis--;
             }
             else if (zChange < -0.2){
-                direction[1] = "UP";
                 axis++;
             }
-            else {
-                direction[1] = "MID";
-            }
 
-            if (axis > 70) {
-                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_droite90, getApplicationContext().getTheme()));
+            if (axis > 40) {
+                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_droitecasse, getApplicationContext().getTheme()));
                 if(!tomb){
                     ouvrirCamera();
                     playSoundDestroy();
                     tomb=true;
                 }
                 //
-            } else if (axis < -70) {
-                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_gauche90, getApplicationContext().getTheme()));
+            } else if (axis < -40) {
+                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_gauchecasse, getApplicationContext().getTheme()));
 //
                 if(!tomb){
                     ouvrirCamera();
                     playSoundDestroy();
                     tomb=true;
                 }
-            } else if (axis > 60) {
+            } else if (axis > 30) {
                 view.setImageDrawable(getResources().getDrawable(R.drawable.verre_droite, getApplicationContext().getTheme()));
-            } else if (axis < -60) {
+            } else if (axis < -30) {
                 view.setImageDrawable(getResources().getDrawable(R.drawable.verre_gauche, getApplicationContext().getTheme()));
-            } else if (axis > 50) {
+            } else if (axis > 25) {
                 view.setImageDrawable(getResources().getDrawable(R.drawable.verre_droite25, getApplicationContext().getTheme()));
-            } else if (axis < -50) {
+            } else if (axis < -25) {
                 view.setImageDrawable(getResources().getDrawable(R.drawable.verre_gauche25, getApplicationContext().getTheme()));
-            } else if (axis > 40) {
+            } else if (axis > 20) {
                 view.setImageDrawable(getResources().getDrawable(R.drawable.verre_droite20, getApplicationContext().getTheme()));
-            } else if (axis < -40){
-                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_gauche20, getApplicationContext().getTheme()));
-            } else if (axis < -30){
-                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_gauche15, getApplicationContext().getTheme()));
-            } else if (axis > 30){
-                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_droite15, getApplicationContext().getTheme()));
             } else if (axis < -20){
-                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_gauche10, getApplicationContext().getTheme()));
-            } else if (axis > 20){
-                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_droite10, getApplicationContext().getTheme()));
+                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_gauche20, getApplicationContext().getTheme()));
+            } else if (axis < -15){
+                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_gauche15, getApplicationContext().getTheme()));
+            } else if (axis > 15){
+                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_droite15, getApplicationContext().getTheme()));
             } else if (axis < -10){
-                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_gauche5, getApplicationContext().getTheme()));
+                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_gauche10, getApplicationContext().getTheme()));
             } else if (axis > 10){
+                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_droite10, getApplicationContext().getTheme()));
+            } else if (axis < -5){
+                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_gauche5, getApplicationContext().getTheme()));
+            } else if (axis > 5){
                 view.setImageDrawable(getResources().getDrawable(R.drawable.verre_droite5, getApplicationContext().getTheme()));
             }
             else {
                 view.setImageDrawable(getResources().getDrawable(R.drawable.verre_base, getApplicationContext().getTheme()));
             }
 
-            System.out.println(direction[0] + ";" + direction[1]);
-            System.out.println("AXIS : " + axis);
-            System.out.println("changeSpeed = " + event.values[2]);
         }
 
 
