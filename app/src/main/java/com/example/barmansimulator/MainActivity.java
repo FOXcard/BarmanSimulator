@@ -1,8 +1,10 @@
 package com.example.barmansimulator;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -42,7 +44,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        // affiche une popup si l'utilisateur doit accepter manuellement une permission
+        ActivityCompat.requestPermissions(this,
+                new String[]{Manifest.permission.CAMERA,
+                        Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         mLight = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
