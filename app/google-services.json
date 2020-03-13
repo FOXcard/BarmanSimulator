@@ -1,0 +1,127 @@
+{
+  "project_info": {
+    "project_number": "336253630154",
+    "firebase_url": "https://projetmobe-faf30.firebaseio.com",
+    "project_id": "projetmobe-faf30",
+    "storage_bucket": "projetmobe-faf30.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:336253630154:android:459cfacf5cd1df167be633",
+        "android_client_info": {
+          "package_name": "com.example.barmansimulator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "336253630154-75ee3io4u6d674hma9bcjgia8pruf5gm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYcXxSfupMvPS0BkamR0dC9VN_-mXViis"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "336253630154-75ee3io4u6d674hma9bcjgia8pruf5gm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:336253630154:android:27e044df8dee2b387be633",
+        "android_client_info": {
+          "package_name": "com.tabian.firebaseuploadimage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "336253630154-75ee3io4u6d674hma9bcjgia8pruf5gm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYcXxSfupMvPS0BkamR0dC9VN_-mXViis"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "336253630154-75ee3io4u6d674hma9bcjgia8pruf5gm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:336253630154:android:060a641c4b9dab727be633",
+        "android_client_info": {
+          "package_name": "game.m2dl.projettest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "336253630154-75ee3io4u6d674hma9bcjgia8pruf5gm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYcXxSfupMvPS0BkamR0dC9VN_-mXViis"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "336253630154-75ee3io4u6d674hma9bcjgia8pruf5gm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:336253630154:android:0faa128e94e8a9427be633",
+        "android_client_info": {
+          "package_name": "mobe.m2dl.projetmobe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "336253630154-75ee3io4u6d674hma9bcjgia8pruf5gm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYcXxSfupMvPS0BkamR0dC9VN_-mXViis"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "336253630154-75ee3io4u6d674hma9bcjgia8pruf5gm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
