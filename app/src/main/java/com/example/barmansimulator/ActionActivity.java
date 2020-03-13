@@ -38,9 +38,12 @@ public class ActionActivity extends AppCompatActivity {
         int size = prefs.getInt("_size", 0);
 
         List<String> data = new ArrayList<String>(size);
-        for(int i=0; i<size; i++)
-            data.add(prefs.getString("_"+i, null));
-        val = data;
+        for(int i=0; i<size; i++) {
+            data.add(prefs.getString("_" + i, null));
+        }
+        val = new ArrayList<>();
+        for(String m : data)
+            addValue(m);
     }
 
 
