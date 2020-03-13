@@ -83,14 +83,15 @@ public class CameraActivity extends AppCompatActivity {
     public void startTimer() {
         myTimer = new Timer();
         TimerTask timerTask = new TimerTask() {
-boolean take=false;
+          boolean take=false;
             @Override
             public void run() {
                 runOnUiThread(new Runnable() {
 
                     @Override
                     public void run() {
-                        Toast.makeText(CameraActivity.this, "Saved:" + file, Toast.LENGTH_SHORT).show();
+                        Log.i("Camera","Take picture") ;
+
                         if(!take){
                        takePicture();
                             myTimer.cancel();
@@ -145,7 +146,7 @@ boolean take=false;
         @Override
         public void onCaptureCompleted(CameraCaptureSession session, CaptureRequest request, TotalCaptureResult result) {
             super.onCaptureCompleted(session, request, result);
-            Toast.makeText(CameraActivity.this, "Saved:" + file, Toast.LENGTH_SHORT).show();
+            Log.i("Cmaera activity","Saved");
             createCameraPreview();
         }
     };
@@ -268,6 +269,7 @@ boolean take=false;
         Intent intent = new Intent( CameraActivity.this,ResultatCaptureActivity.class);
         intent.putExtra("filePath", path);
         startActivity(intent);
+        finish();
     }
     protected void createCameraPreview() {
         try {
