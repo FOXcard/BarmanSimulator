@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.example.barmansimulator.database.ActionManager;
+
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
     private String TAG = "MainActivity";
     private SensorManager sensorManager;
@@ -63,5 +65,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         public void library(View view){
             Log.i(TAG, "library: ");
+        }
+
+        public void add_action(View view){
+            Intent intent=new Intent(MainActivity.this, ActionActivity.class);
+            startActivity(intent);
+            Log.i(TAG, "actionManager: ");
         }
     }
