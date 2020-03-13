@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".BarmanActivity">
 
     <TextView
@@ -13,4 +14,15 @@
         android:layout_height="wrap_content"
         android:textSize="50dp"
         android:text="Good Luck" />
+
+    <ImageView
+        android:id="@+id/ViewGlass"
+        android:layout_width="match_parent"
+        android:layout_height="520dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/verre_base" />
 </LinearLayout>
+
