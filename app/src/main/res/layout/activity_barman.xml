@@ -15,10 +15,14 @@
         android:textSize="50dp"
         android:text="Good Luck" />
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="91dp" />
+
     <ImageView
         android:id="@+id/ViewGlass"
         android:layout_width="match_parent"
-        android:layout_height="520dp"
+        android:layout_height="428dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
