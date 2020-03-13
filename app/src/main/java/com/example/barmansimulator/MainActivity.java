@@ -2,13 +2,13 @@ package com.example.barmansimulator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
     private String TAG = "MainActivity";
@@ -54,11 +54,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             sensorManager.unregisterListener(this);
         }
 
-        public void play(){
-
+        public void play(View view){
+            Log.i(TAG, "play: ");
         }
 
-        public void library(){
-
+        public void library(View view){
+            Log.i(TAG, "library: ");
         }
     }
