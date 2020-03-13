@@ -2,6 +2,25 @@ package com.example.barmansimulator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.barmansimulator.camera.CameraActivity;
+
+import java.io.File;
+import java.util.Timer;
+import java.util.TimerTask;
+
+
+
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -13,6 +32,7 @@ import android.view.View;
 
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
+
     private String TAG = "MainActivity";
     private SensorManager sensorManager;
     private Sensor mLight;
@@ -21,10 +41,16 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-            sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-            mLight = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+
+
+
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        mLight = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
         Log.i(TAG, "onCreate: "+mLight);
-        }
+    }
+
+
+
 
         @Override
         public final void onAccuracyChanged(Sensor sensor, int accuracy) {

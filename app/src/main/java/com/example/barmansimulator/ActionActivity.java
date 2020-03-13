@@ -33,7 +33,14 @@ public class ActionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_action);
-        val = new ArrayList<>();
+        SharedPreferences prefs=this.getSharedPreferences("yourPrefsKey", Context.MODE_PRIVATE);
+        Set<String> set = prefs.getStringSet("_", null);
+        int size = prefs.getInt("_size", 0);
+
+        List<String> data = new ArrayList<String>(size);
+        for(int i=0; i<size; i++)
+            data.add(prefs.getString("_"+i, null));
+        val = data;
     }
 
 
@@ -92,26 +99,5 @@ public class ActionActivity extends AppCompatActivity {
             editor.putInt("_size", val.size());
             editor.commit();
         }
-   /* public void checkData(View view){
-        Cursor c = actionManager.getActions();
-        if (c.moveToFirst())
-        {
-            do {
-                Log.d("test",
-                        c.getInt(c.getColumnIndex(ActionManager.KEY_ACTION)) + "," +
-                                c.getString(c.getColumnIndex(ActionManager.KEY_ID_ACTION))
-                );
-            }
-            while (c.moveToNext());
-        }
-        c.close();
-    }
-
-    public void add(View view){
-        i++;
-        Action a = new Action(i,"bis");
-        actionManager.addAction(a);
-    }
-*/
 
 }
