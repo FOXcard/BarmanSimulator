@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.example.barmansimulator.database.ActionManager;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
     private String TAG = "MainActivity";

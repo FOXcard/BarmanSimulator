@@ -2,8 +2,11 @@ package com.example.barmansimulator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.util.Log;
 import android.view.Gravity;
@@ -14,17 +17,23 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 
 public class ActionActivity extends AppCompatActivity {
     //ActionManager actionManager;
     int compteur = 0;
     private String TAG = "ActionActivity";
-    final String [] col1 = {"col1:ligne1","col1:ligne2","col1:ligne3","col1:ligne4","col1:ligne5"," tv1.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1));"};
+    List<String> val;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_action);
+        val = new ArrayList<>();
     }
 
 
@@ -33,6 +42,7 @@ public class ActionActivity extends AppCompatActivity {
             TableRow row; // création d'un élément : ligne
             TextView tv1; // création des cellules
             Button tv3;
+            val.add(value);
                 row = new TableRow(this); // création d'une nouvelle ligne
                 tv3 = new Button(this);
                 tv1 = new TextView(this);
@@ -62,6 +72,25 @@ public class ActionActivity extends AppCompatActivity {
         public void add(View view){
             EditText editText = findViewById(R.id.editText);
             addValue(editText.getText().toString());
+            save(view);
+        }
+
+        public void save(View view){
+            SharedPreferences prefs=this.getSharedPreferences("yourPrefsKey", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+
+            int size = prefs.getInt("_size", 0);
+
+            // clear the previous data if exists
+            for(int i=0; i<size; i++)
+                editor.remove("_"+i);
+
+            // write the current list
+            for(int i=0; i<val.size(); i++)
+                editor.putString("_"+i, val.get(i));
+
+            editor.putInt("_size", val.size());
+            editor.commit();
         }
    /* public void checkData(View view){
         Cursor c = actionManager.getActions();
