@@ -257,9 +257,13 @@ private void setLoadedMusic(){
     }
     private void changeText(){
         if(!tomb) {
-            Random random = new Random();
-            int randomNumber = random.nextInt(data.size());
-            textView.setText(data.get(randomNumber)+" score: "+score);
+            if(!data.isEmpty()) {
+                Random random = new Random();
+                int randomNumber = random.nextInt(data.size());
+                textView.setText(data.get(randomNumber) + " score: " + score);
+            }else{
+                textView.setText("score: " + score);
+            }
         }
     }
     public void ouvrirCamera() {
