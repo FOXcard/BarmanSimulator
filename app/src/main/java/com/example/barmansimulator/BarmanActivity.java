@@ -25,7 +25,7 @@ public class BarmanActivity extends AppCompatActivity implements SensorEventList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_barman);
         sensorManager=(SensorManager) getSystemService(SENSOR_SERVICE);
-        sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE), SensorManager.SENSOR_DELAY_NORMAL);
+        sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE), SensorManager.SENSOR_DELAY_GAME);
     }
     @Override
     public void onAccuracyChanged(Sensor arg0, int arg1) {
@@ -55,11 +55,11 @@ public class BarmanActivity extends AppCompatActivity implements SensorEventList
                 changeSpeed = 0;
             }
 
-            if (xChange > 0.5){
+            if (xChange > 0.4){
                 direction[0] = "RIGHT";
                 //axis ++;
             }
-            else if (xChange < -0.5){
+            else if (xChange < -0.4){
                 direction[0] = "LEFT";
                 //axis --;
             }
@@ -78,11 +78,11 @@ public class BarmanActivity extends AppCompatActivity implements SensorEventList
             else {
                 direction[1] = "MID";
             }
-            if (zChange > 0.4){
+            if (zChange > 0.2){
                 direction[1] = "DOWN";
                 axis--;
             }
-            else if (zChange < -0.4){
+            else if (zChange < -0.2){
                 direction[1] = "UP";
                 axis++;
             }
@@ -90,22 +90,34 @@ public class BarmanActivity extends AppCompatActivity implements SensorEventList
                 direction[1] = "MID";
             }
 
-            if (axis > 5) {
+            if (axis > 70) {
                 view.setImageDrawable(getResources().getDrawable(R.drawable.verre_droite90, getApplicationContext().getTheme()));
-            } else if (axis < -5){
+            } else if (axis < -70) {
                 view.setImageDrawable(getResources().getDrawable(R.drawable.verre_gauche90, getApplicationContext().getTheme()));
-            } else if (axis == -4){
-                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_gauche, getApplicationContext().getTheme()));
-            } else if (axis == 4){
+            } else if (axis > 60) {
                 view.setImageDrawable(getResources().getDrawable(R.drawable.verre_droite, getApplicationContext().getTheme()));
-            } else if (axis == -3){
-                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_gauche20, getApplicationContext().getTheme()));
-            } else if (axis == 3){
+            } else if (axis < -60) {
+                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_gauche, getApplicationContext().getTheme()));
+            } else if (axis > 50) {
+                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_droite25, getApplicationContext().getTheme()));
+            } else if (axis < -50) {
+                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_gauche25, getApplicationContext().getTheme()));
+            } else if (axis > 40) {
                 view.setImageDrawable(getResources().getDrawable(R.drawable.verre_droite20, getApplicationContext().getTheme()));
-            } else if (axis == -2){
+            } else if (axis < -40){
+                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_gauche20, getApplicationContext().getTheme()));
+            } else if (axis < -30){
+                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_gauche15, getApplicationContext().getTheme()));
+            } else if (axis > 30){
+                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_droite15, getApplicationContext().getTheme()));
+            } else if (axis < -20){
                 view.setImageDrawable(getResources().getDrawable(R.drawable.verre_gauche10, getApplicationContext().getTheme()));
-            } else if (axis == 2){
+            } else if (axis > 20){
                 view.setImageDrawable(getResources().getDrawable(R.drawable.verre_droite10, getApplicationContext().getTheme()));
+            } else if (axis < -10){
+                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_gauche5, getApplicationContext().getTheme()));
+            } else if (axis > 10){
+                view.setImageDrawable(getResources().getDrawable(R.drawable.verre_droite5, getApplicationContext().getTheme()));
             }
             else {
                 view.setImageDrawable(getResources().getDrawable(R.drawable.verre_base, getApplicationContext().getTheme()));
