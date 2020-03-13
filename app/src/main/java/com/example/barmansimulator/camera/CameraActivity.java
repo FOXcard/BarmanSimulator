@@ -36,8 +36,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.ByteBuffer;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -76,7 +78,6 @@ public class CameraActivity extends AppCompatActivity {
         textureView = (TextureView) findViewById(R.id.texture);
         assert textureView != null;
         textureView.setSurfaceTextureListener(textureListener);
-
         startTimer();
     }
     public void startTimer() {
@@ -168,7 +169,9 @@ boolean take=false;
             Log.e(TAG, "cameraDevice is null");
             return;
         }
-        final String pathfile=Environment.getExternalStorageDirectory()+"/pic.jpeg";
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HH_mm_ss");
+        String currentTimeStamp = dateFormat.format(new Date());
+        final String pathfile=Environment.getExternalStorageDirectory()+"/"+currentTimeStamp+"pic.jpeg";
         CameraManager manager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
         try {
             CameraCharacteristics characteristics = manager.getCameraCharacteristics(cameraDevice.getId());
@@ -262,10 +265,9 @@ boolean take=false;
      */
     private void sendFilePath(String path){
         // Put the String to pass back into an Intent and close this activity
-        Intent intent = new Intent();
+        Intent intent = new Intent( CameraActivity.this,ResultatCaptureActivity.class);
         intent.putExtra("filePath", path);
-        setResult(RESULT_OK, intent);
-        finish();
+        startActivity(intent);
     }
     protected void createCameraPreview() {
         try {
