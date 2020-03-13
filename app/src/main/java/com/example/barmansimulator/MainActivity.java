@@ -2,6 +2,7 @@ package com.example.barmansimulator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -55,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
 
         public void play(View view){
+            Intent intent=new Intent(MainActivity.this, BarmanActivity.class);
+            startActivity(intent);
             Log.i(TAG, "play: ");
         }
 
