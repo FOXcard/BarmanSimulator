@@ -12,8 +12,6 @@ import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.barmansimulator.camera.CameraActivity;
 
 import java.util.ArrayList;
@@ -28,14 +26,12 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.os.Bundle;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 public class BarmanActivity extends AppCompatActivity implements SensorEventListener {
     private SoundPool soundPool;
     private AudioManager audioManager;
-
+    private  int score;
     // Maximumn sound stream.
     private static final int MAX_STREAMS = 5;
 
@@ -68,7 +64,6 @@ public class BarmanActivity extends AppCompatActivity implements SensorEventList
         setContentView(R.layout.activity_barman);
 
         textView=findViewById(R.id.textView);
-       // startTimerResultat();
         startTimerText();
         setLoadedMusic();
 
@@ -90,6 +85,7 @@ boolean tomb=false;
     public void onSensorChanged(SensorEvent event) {
         view = findViewById(R.id.ViewGlass);
         if (event.sensor.getType()==Sensor.TYPE_GYROSCOPE){
+
             double xChange = history[0] - event.values[0];
             double yChange = history[1] - event.values[1];
             double zChange = history[2] - event.values[2];
@@ -149,6 +145,7 @@ boolean tomb=false;
                 view.setImageDrawable(getResources().getDrawable(R.drawable.verre_droite90, getApplicationContext().getTheme()));
                 if(!tomb){
                     ouvrirCamera();
+                    playSoundDestroy();
                     tomb=true;
                 }
                 //
@@ -157,6 +154,7 @@ boolean tomb=false;
 //
                 if(!tomb){
                     ouvrirCamera();
+                    playSoundDestroy();
                     tomb=true;
                 }
             } else if (axis > 60) {
@@ -195,17 +193,6 @@ boolean tomb=false;
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 private void setLoadedMusic(){
@@ -249,6 +236,7 @@ private void setLoadedMusic(){
         @Override
         public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
             loaded = true;
+            playSound();
         }
     });
 
@@ -260,30 +248,6 @@ private void setLoadedMusic(){
 
 }
 
-
-    public void startTimerResultat() {
-        myTimerResulta = new Timer();
-        TimerTask timerTask = new TimerTask() {
-            boolean take=false;
-            @Override
-            public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(BarmanActivity.this, "Open camera", Toast.LENGTH_SHORT).show();
-                        if(!take){
-                            ouvrirCamera();
-                            myTimerResulta.cancel();
-                        }
-                        else {
-                            myTimerResulta.cancel();
-                        }
-                    }
-                });
-            }
-        };
-        myTimerResulta.scheduleAtFixedRate(timerTask, 2000, 2000);
-    }
     public void startTimerText() {
         myTimerText = new Timer();
         TimerTask timerTask = new TimerTask() {
@@ -294,15 +258,16 @@ private void setLoadedMusic(){
                     @Override
                     public void run() {
                         changeText();
+                        score++;
                     }
                 });
             }
         };
-        myTimerText.scheduleAtFixedRate(timerTask, 1000, 5000);
+        myTimerText.scheduleAtFixedRate(timerTask, 1000, 2000);
     }
 
     // When users click on the button "Gun"
-    public void playSoundGun()  {
+    public void playSoundDestroy()  {
         if(loaded)  {
             float leftVolumn = volume;
             float rightVolumn = volume;
@@ -312,7 +277,7 @@ private void setLoadedMusic(){
     }
 
     // When users click on the button "Destroy"
-    public void playSoundDestroy()  {
+    public void playSound()  {
         if(loaded)  {
             float leftVolumn = volume;
             float rightVolumn = volume;
@@ -322,16 +287,16 @@ private void setLoadedMusic(){
         }
     }
     private void changeText(){
-        playSoundDestroy();
-
-        Random random = new Random();
-        int randomNumber = random.nextInt(data.size());
-        textView.setText(data.get(randomNumber));
-
+        if(!tomb) {
+            Random random = new Random();
+            int randomNumber = random.nextInt(data.size());
+            textView.setText(data.get(randomNumber)+" score: "+score);
+        }
     }
     public void ouvrirCamera() {
         Intent intent = new Intent(BarmanActivity.this, CameraActivity.class);
         startActivity(intent);
+        finish();
     }
 
 

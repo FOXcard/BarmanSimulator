@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             Intent intent=new Intent(MainActivity.this, BarmanActivity.class);
             startActivity(intent);
             Log.i(TAG, "play: ");
+            finish();
         }
 
         public void library(View view){

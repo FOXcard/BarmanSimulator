@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -32,10 +33,9 @@ public class ResultatCaptureActivity extends AppCompatActivity {
 
     private void loadImageFromStorage(String path) {
         File imgFile = new File(path);
-        Toast.makeText(ResultatCaptureActivity.this, "Main acitivity" + imgFile.getAbsolutePath(), Toast.LENGTH_SHORT).show();
+
         if (imgFile.exists()) {
-            Toast.makeText(ResultatCaptureActivity.this, "Main acitivity" + imgFile.getAbsolutePath(), Toast.LENGTH_SHORT).show();
-            Toast.makeText(ResultatCaptureActivity.this, "" + imgFile.getAbsolutePath(), Toast.LENGTH_SHORT).show();
+            Log.i("Resulltat","file charge");
             cameraImageBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
 
             cameraImage.setImageBitmap(cameraImageBitmap);
@@ -52,5 +52,6 @@ public class ResultatCaptureActivity extends AppCompatActivity {
     public void rePlay(View view) {
         Intent intent=new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 }
